@@ -1,4 +1,4 @@
-# HydroSYS — Architecture & Design Plan
+# Hydroponic Control — Architecture & Design Plan
 
 Technical reference for contributors. User-facing docs are in [README.md](README.md).
 
@@ -16,7 +16,7 @@ Eine HACS-veröffentlichbare Home Assistant Custom Component, die **bestehende E
 ┌─────────────────────────────────────────────────────────┐
 │                  Home Assistant                          │
 │  ┌──────────────────────────────────────────────────┐   │
-│  │           HydroSYS Integration                   │   │
+│  │           Hydroponic Control Integration                   │   │
 │  │  ┌─────────────┐   state_changed  ┌───────────┐ │   │
 │  │  │  controller  │◄────────────────│  Source   │ │   │
 │  │  │  (Coordinator)│                │  Entities │ │   │
@@ -24,7 +24,7 @@ Eine HACS-veröffentlichbare Home Assistant Custom Component, die **bestehende E
 │  │  └──────┬───────┘                 │  Light,   │ │   │
 │  │         │ async_set_updated_data  │  Sensors) │ │   │
 │  │  ┌──────▼───────────────────────┐ └───────────┘ │   │
-│  │  │  HydroSYS Entitäten          │               │   │
+│  │  │  Hydroponic Control Entitäten          │               │   │
 │  │  │  (Status, Alarme, Steuerung) │               │   │
 │  │  └──────────────────────────────┘               │   │
 │  └──────────────────────────────────────────────────┘   │
@@ -38,12 +38,12 @@ Die Integration spricht **nie direkt Hardware an**. Sie liest Zustände vorhande
 ## Datei-Übersicht
 
 ```
-custom_components/hydrosys/
+custom_components/hydroponic_control/
 ├── __init__.py          Setup/Unload, Plattform-Forwarding, Reload bei Options-Änderung
 ├── controller.py        Herzstück: Zustandsmaschine, Timer, Sicherheits-Gates (~550 LOC)
 ├── config_flow.py       UI-Einrichtung (Entitäten verknüpfen) + Options-Flow (Tuning)
 ├── const.py             Alle Konstanten, CONF_*, DEFAULT_*, Alarm-Keys
-├── entity.py            Basisklassen: HydroSysEntity (read-only) + HydroSysControlEntity
+├── entity.py            Basisklassen: HydroEntity (read-only) + HydroSettingEntity (steuernd)
 ├── number.py            Pump-Timings & Temperatur-Grenzen (RestoreNumber)
 ├── time.py              Licht-Ein/Aus-Zeiten (RestoreEntity + TimeEntity)
 ├── select.py            Betriebsmodus-Auswahl (RestoreEntity + SelectEntity)
@@ -66,7 +66,7 @@ custom_components/hydrosys/
 ```
 async_setup_entry()
   │
-  ├─ 1. HydroSysController() erstellen
+  ├─ 1. HydroController() erstellen
   ├─ 2. async_forward_entry_setups()  ← Entitäten restoren & Controller seeden
   └─ 3. controller.async_start()      ← Loops starten (Sensoren tracken, Licht, Zyklus)
 
@@ -208,23 +208,23 @@ Registriert via `entity_platform.async_register_entity_service` im `switch.py`:
 
 | Service | Target | Parameter | Effekt |
 |---|---|---|---|
-| `hydrosys.run_pump` | Switch-Entität | `minutes: float` (optional) | Pumpe manuell X Minuten |
-| `hydrosys.reset_alarms` | Switch-Entität | — | Verriegelte Alarme zurücksetzen |
+| `hydroponic_control.run_pump` | Switch-Entität | `minutes: float` (optional) | Pumpe manuell X Minuten |
+| `hydroponic_control.reset_alarms` | Switch-Entität | — | Verriegelte Alarme zurücksetzen |
 
 ---
 
 ## Events
 
 ```yaml
-# hydrosys_alert
-event_type: hydrosys_alert
+# hydroponic_control_alert
+event_type: hydroponic_control_alert
 data:
   config_entry_id: "abc123"
   alarm: "dry_run"          # Key aus ALARM_* Konstanten
   message: "..."
 
-# hydrosys_alert_cleared
-event_type: hydrosys_alert_cleared
+# hydroponic_control_alert_cleared
+event_type: hydroponic_control_alert_cleared
 data:
   config_entry_id: "abc123"
   alarm: "dry_run"
@@ -261,8 +261,8 @@ Alle Entitäten abonnieren via `CoordinatorEntity`. Bei jeder Zustandsänderung 
 
 ## Nächste Schritte
 
-- [ ] Auf echter HA-Instanz testen (kopiere `custom_components/hydrosys/` nach `config/custom_components/`)
-- [ ] `@dariobaio` und GitHub-URLs in `manifest.json` ersetzen
+- [ ] Auf echter HA-Instanz testen (kopiere `custom_components/hydroponic_control/` nach `config/custom_components/`)
+- [ ] `@DDA1010` und GitHub-URLs in `manifest.json` ersetzen
 - [ ] GitHub-Repo erstellen + pushen → CI läuft automatisch (hassfest + HACS)
 - [ ] Optionale Features: pH/EC-Monitoring, Auto-Nachfüll-Ventil, Energie-Statistiken
 
