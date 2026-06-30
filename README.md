@@ -32,6 +32,10 @@ Wi-Fi.
 
 ### HACS (custom repository)
 
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=DDA1010&repository=hydroponic-control&category=integration)
+
+Oder manuell:
+
 1. HACS → ⋮ → **Custom repositories**.
 2. Add `https://github.com/DDA1010/hydroponic-control`, category **Integration**.
 3. Install **Hydroponic Control**, then restart Home Assistant.
