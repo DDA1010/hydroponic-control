@@ -1,13 +1,13 @@
 {
   "domain": "hydroponic_control",
   "name": "Hydroponic Control",
-  "version": "1.0.0",
-  "documentation": "https://github.com/DDA1010/hydroponic-control",
-  "issue_tracker": "https://github.com/DDA1010/hydroponic-control/issues",
   "codeowners": ["@DDA1010"],
   "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/DDA1010/hydroponic-control",
   "integration_type": "device",
   "iot_class": "calculated",
-  "dependencies": [],
-  "requirements": []
+  "issue_tracker": "https://github.com/DDA1010/hydroponic-control/issues",
+  "requirements": [],
+  "version": "1.0.0"
 }
