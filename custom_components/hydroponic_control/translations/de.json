@@ -1,0 +1,132 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Hydroponic Control-Steuerung",
+        "description": "Wähle deine bereits vorhandenen Entitäten aus. Nur die Pumpe ist Pflicht; alles andere ist optional, schaltet aber mehr Funktionen und Sicherheitsprüfungen frei.",
+        "data": {
+          "name": "Name",
+          "pump_switch": "Pumpe (Schalter / Steckdose)",
+          "water_sensor": "Füllstand-/Lecksensor (Trockenlaufschutz)",
+          "water_wet_state": "Welcher Zustand bedeutet, dass Wasser vorhanden ist",
+          "light_switch": "Pflanzenlicht (Schalter / Steckdose)",
+          "fan_switch": "Umwälz-/Ablauflüfter",
+          "heater_switch": "Wasserheizung",
+          "floor_leak_sensor": "Boden-Lecksensor (Überlauf-/Leckerkennung)",
+          "water_temp_sensor": "Wassertemperatursensor",
+          "air_temp_sensor": "Luft-/Außentemperatursensor",
+          "humidity_sensor": "Luftfeuchtigkeitssensor",
+          "illuminance_sensor": "Helligkeitssensor",
+          "pump_power_sensor": "Pumpen-Leistungssensor (Fehlererkennung)"
+        },
+        "data_description": {
+          "water_sensor": "Ein Leck-/Füllstandsensor an der minimalen Wasserlinie. Verhindert, dass die Pumpe trocken läuft.",
+          "pump_power_sensor": "Wenn die Pumpensteckdose Leistung meldet, prüft Hydroponic Control, ob die Pumpe nach dem Einschalten wirklich Strom zieht."
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Sicherheit & erweiterte Einstellungen",
+        "data": {
+          "notify_service": "Benachrichtigungsdienst (z. B. notify.mobile_app_handy)",
+          "pump_power_threshold": "Leistungsschwelle der Pumpe",
+          "dry_run_debounce_seconds": "Entprellung Trockenlauf",
+          "slosh_grace_seconds": "Karenzzeit nach Pumpenstart (Schwappen)",
+          "pump_fault_check_seconds": "Verzögerung Pumpen-Fehlerprüfung",
+          "sensor_unavailable_minutes": "Timeout bei Sensorausfall",
+          "pump_max_runtime_minutes": "Maximale Pumpenlaufzeit (Notaus)",
+          "blocked_recheck_seconds": "Wiederholintervall bei Blockade",
+          "fan_on_overtemp": "Lüfter bei zu warmem Wasser einschalten",
+          "heater_on_undertemp": "Heizung bei zu kaltem Wasser einschalten"
+        },
+        "data_description": {
+          "notify_service": "Leer lassen, um stattdessen den Problem-Sensor und die hydroponic_control_alert-Events zu nutzen."
+        }
+      }
+    }
+  },
+  "selector": {
+    "water_wet_state": {
+      "options": {
+        "on": "An = Wasser vorhanden",
+        "off": "Aus = Wasser vorhanden"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "idle": "Bereit",
+          "irrigating": "Bewässert",
+          "waiting": "Pause",
+          "blocked": "Blockiert",
+          "maintenance": "Wartung"
+        }
+      },
+      "next_pump_change": { "name": "Nächster Pumpenwechsel" },
+      "problem": {
+        "name": "Problem",
+        "state": {
+          "ok": "OK",
+          "dry_run": "Trockenlauf",
+          "water_temp": "Wassertemperatur",
+          "pump_fault": "Pumpenfehler",
+          "sensor_fault": "Sensorfehler",
+          "leak": "Leck"
+        }
+      }
+    },
+    "binary_sensor": {
+      "dry_run": { "name": "Trockenlauf" },
+      "water_temp": { "name": "Wassertemperatur-Alarm" },
+      "pump_fault": { "name": "Pumpenfehler" },
+      "sensor_fault": { "name": "Sensorfehler" },
+      "leak": { "name": "Leck" }
+    },
+    "switch": {
+      "irrigation": { "name": "Bewässerung" }
+    },
+    "select": {
+      "mode": {
+        "name": "Modus",
+        "state": {
+          "auto": "Automatik",
+          "manual": "Manuell",
+          "maintenance": "Wartung",
+          "vacation": "Urlaub"
+        }
+      }
+    },
+    "number": {
+      "pump_on_minutes": { "name": "Pumpe An-Zeit" },
+      "pump_off_minutes": { "name": "Pumpe Aus-Zeit" },
+      "water_temp_max": { "name": "Wassertemperatur max" },
+      "water_temp_min": { "name": "Wassertemperatur min" }
+    },
+    "time": {
+      "light_on": { "name": "Licht an" },
+      "light_off": { "name": "Licht aus" }
+    }
+  },
+  "services": {
+    "run_pump": {
+      "name": "Pumpe starten",
+      "description": "Einen einzelnen manuellen Bewässerungsimpuls ausführen (weiterhin durch Trockenlaufschutz/Sicherheit abgesichert).",
+      "fields": {
+        "minutes": {
+          "name": "Minuten",
+          "description": "Impulsdauer in Minuten. Standard ist die konfigurierte Pumpe-An-Zeit."
+        }
+      }
+    },
+    "reset_alarms": {
+      "name": "Alarme zurücksetzen",
+      "description": "Verriegelte Alarme löschen und versuchen, den Bewässerungszyklus fortzusetzen."
+    }
+  }
+}

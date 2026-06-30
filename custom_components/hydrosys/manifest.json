@@ -1,0 +1,13 @@
+{
+  "domain": "hydrosys",
+  "name": "HydroSYS",
+  "version": "0.1.0",
+  "documentation": "https://github.com/dariobaio/hydrosys",
+  "issue_tracker": "https://github.com/dariobaio/hydrosys/issues",
+  "codeowners": ["@dariobaio"],
+  "config_flow": true,
+  "integration_type": "device",
+  "iot_class": "calculated",
+  "dependencies": [],
+  "requirements": []
+}
