@@ -79,11 +79,11 @@ def _user_schema() -> vol.Schema:
             vol.Optional(CONF_FAN_SWITCH): _entity(_ACTUATOR_DOMAINS),
             vol.Optional(CONF_HEATER_SWITCH): _entity(_ACTUATOR_DOMAINS),
             vol.Optional(CONF_FLOOR_LEAK_SENSOR): _entity("binary_sensor"),
-            vol.Optional(CONF_WATER_TEMP_SENSOR): _entity("sensor", "temperature"),
-            vol.Optional(CONF_AIR_TEMP_SENSOR): _entity("sensor", "temperature"),
-            vol.Optional(CONF_HUMIDITY_SENSOR): _entity("sensor", "humidity"),
-            vol.Optional(CONF_ILLUMINANCE_SENSOR): _entity("sensor", "illuminance"),
-            vol.Optional(CONF_PUMP_POWER_SENSOR): _entity("sensor", "power"),
+            vol.Optional(CONF_WATER_TEMP_SENSOR): _entity("sensor"),
+            vol.Optional(CONF_AIR_TEMP_SENSOR): _entity("sensor"),
+            vol.Optional(CONF_HUMIDITY_SENSOR): _entity("sensor"),
+            vol.Optional(CONF_ILLUMINANCE_SENSOR): _entity("sensor"),
+            vol.Optional(CONF_PUMP_POWER_SENSOR): _entity("sensor"),
         }
     )
 
