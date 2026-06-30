@@ -1,16 +1,11 @@
-# Hydroponic Control — Hydroponics controller for Home Assistant
+# Hydroponic Control — Hydroponics automation for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
 [![Issues](https://img.shields.io/github/issues/DDA1010/hydroponic-control.svg)](https://github.com/DDA1010/hydroponic-control/issues)
 
-Hydroponic Control turns the entities you **already have** (a pump plug, a grow-light plug,
-a water/leak sensor, temperature sensors, …) into a complete, safety-first
-hydroponics controller — configured entirely from the UI.
+**Hydroponic Control** is a Home Assistant integration that turns your existing smart plugs and sensors into a fully automated hydroponic grow system — no YAML, no coding, configured entirely through the UI in minutes.
 
-It is an **orchestrator**: it does not talk to hardware directly. It reads your
-existing sensors and calls services on your existing switches, so it works with
-any pump/light/sensor regardless of whether they are Zigbee, ESPHome, MQTT or
-Wi-Fi.
+Whether you're running a **tower garden**, an **NFT channel**, a **DWC bucket**, or any other hydroponic setup, this integration handles the irrigation cycle, grow light photoperiod, water temperature management, and safety monitoring for you. It works with any hardware — Tuya, Zigbee, ESPHome, MQTT, or Wi-Fi — because it controls your existing Home Assistant entities rather than talking to hardware directly.
 
 ## Features
 
@@ -22,6 +17,16 @@ Wi-Fi.
 - **Flood / leak detection**, **max-runtime backstop**, **sensor-unavailable watchdog** (fail-safe).
 - **Operating modes** — Auto, Manual, Maintenance (auto-expiring), Vacation.
 - **Notifications** — fires `hydroponic_control_alert` events and exposes a `Problem` binary sensor; can also call a notify service directly.
+
+## Who is this for?
+
+If you use Home Assistant to automate your home and want to extend that to your **hydroponic garden, grow room, or indoor growing setup**, this integration is the easiest way to do it. Instead of writing complex YAML automations for irrigation timing, grow light schedules, and safety shutoffs, Hydroponic Control handles all of that as a single, configurable integration with a proper UI.
+
+It is especially useful for:
+- **Tower gardens** (Lettuce Grow, Tower Garden, DIY PVC towers)
+- **NFT (Nutrient Film Technique)** and **DWC (Deep Water Culture)** systems
+- **Kratky** and other passive setups where you want light photoperiod control
+- **Grow rooms** and **grow tents** where temperature monitoring and fan/heater control matters
 
 ## Requirements
 
