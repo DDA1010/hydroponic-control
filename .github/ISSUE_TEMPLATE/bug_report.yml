@@ -1,0 +1,59 @@
+name: Bug Report
+description: Etwas funktioniert nicht wie erwartet
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke fürs Melden! Bitte fülle das Formular so vollständig wie möglich aus.
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Welche Version der Integration verwendest du? (steht in HACS)
+      placeholder: "z. B. 1.0.1"
+    validations:
+      required: true
+
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant Version
+      placeholder: "z. B. 2024.12.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Was passiert?
+      description: Beschreibe das Problem so genau wie möglich.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Was sollte passieren?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Schritte zum Reproduzieren
+      placeholder: |
+        1. Integration einrichten mit ...
+        2. Modus auf ... stellen
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs (optional)
+      description: Home Assistant → Einstellungen → System → Protokolle → nach "hydroponic_control" filtern
+      render: text

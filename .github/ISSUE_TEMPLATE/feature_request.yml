@@ -1,0 +1,30 @@
+name: Feature Request
+description: Idee oder Verbesserungsvorschlag
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke für deinen Vorschlag! Jede Idee hilft, die Integration besser zu machen.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Welches Problem löst das?
+      description: Was fehlt dir aktuell oder was ist umständlich?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Deine Idee
+      description: Wie soll das Feature funktionieren?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativen die du schon probiert hast (optional)

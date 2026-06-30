@@ -1,6 +1,7 @@
 # Hydroponic Control — Hydroponics controller for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![Issues](https://img.shields.io/github/issues/DDA1010/hydroponic-control.svg)](https://github.com/DDA1010/hydroponic-control/issues)
 
 Hydroponic Control turns the entities you **already have** (a pump plug, a grow-light plug,
 a water/leak sensor, temperature sensors, …) into a complete, safety-first
@@ -146,6 +147,14 @@ entities:
 - Auto top-up valve control
 - Runtime/energy statistics entities
 - Night-time irrigation reduction
+
+## Feedback & Support
+
+Gefunden einen Bug oder eine Idee für eine neue Funktion?
+
+- **[Bug melden](https://github.com/DDA1010/hydroponic-control/issues/new?template=bug_report.yml)**
+- **[Feature vorschlagen](https://github.com/DDA1010/hydroponic-control/issues/new?template=feature_request.yml)**
+- **[Fragen & Diskussion](https://github.com/DDA1010/hydroponic-control/discussions)**
 
 ## Disclaimer
 
