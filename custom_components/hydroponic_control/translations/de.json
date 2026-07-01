@@ -43,7 +43,8 @@
           "heater_on_undertemp": "Heizung bei zu kaltem Wasser einschalten"
         },
         "data_description": {
-          "notify_service": "Leer lassen, um stattdessen den Problem-Sensor und die hydroponic_control_alert-Events zu nutzen."
+          "notify_service": "Leer lassen, um stattdessen den Problem-Sensor und die hydroponic_control_alert-Events zu nutzen.",
+          "pump_fault_check_seconds": "So lange nach dem Einschalten warten, bevor die Leistungsaufnahme geprüft wird, damit der Zähler einen echten Wert meldet."
         }
       }
     }
@@ -90,6 +91,9 @@
     },
     "switch": {
       "irrigation": { "name": "Bewässerung" }
+    },
+    "button": {
+      "run_pump": { "name": "Pumpe starten" }
     },
     "select": {
       "mode": {

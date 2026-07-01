@@ -43,7 +43,8 @@
           "heater_on_undertemp": "Run heater when water is too cold"
         },
         "data_description": {
-          "notify_service": "Leave empty to rely on the Problem sensor and hydroponic_control_alert events instead."
+          "notify_service": "Leave empty to rely on the Problem sensor and hydroponic_control_alert events instead.",
+          "pump_fault_check_seconds": "Wait this long after switching the pump on before checking its power draw, so the meter has time to report a real value."
         }
       }
     }
@@ -90,6 +91,9 @@
     },
     "switch": {
       "irrigation": { "name": "Irrigation" }
+    },
+    "button": {
+      "run_pump": { "name": "Run pump" }
     },
     "select": {
       "mode": {

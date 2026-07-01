@@ -48,6 +48,7 @@ custom_components/hydroponic_control/
 ├── time.py              Licht-Ein/Aus-Zeiten (RestoreEntity + TimeEntity)
 ├── select.py            Betriebsmodus-Auswahl (RestoreEntity + SelectEntity)
 ├── switch.py            Master-Enable + Entity-Services (run_pump, reset_alarms)
+├── button.py            Manueller Pumpen-Impuls (ButtonEntity, safety-gated)
 ├── binary_sensor.py     Problem-Sensor + einzelne Alarm-Sensoren
 ├── sensor.py            Status-Sensor (ENUM) + Next-Change-Sensor (TIMESTAMP)
 ├── diagnostics.py       async_get_config_entry_diagnostics für HA-Diagnose-Panel
