@@ -93,7 +93,7 @@
       "irrigation": { "name": "Bewässerung" }
     },
     "button": {
-      "run_pump": { "name": "Pumpe starten" }
+      "maintenance_run": { "name": "Wartungslauf" }
     },
     "select": {
       "mode": {

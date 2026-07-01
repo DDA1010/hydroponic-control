@@ -10,7 +10,7 @@ Whether you're running a **tower garden**, an **NFT channel**, a **DWC bucket**,
 ## Features
 
 - **Irrigation cycle** — pump *x* minutes on / *y* minutes off, adjustable live.
-- **Manual pump run** — a one-tap button (or service) runs the pump once for the configured on-time, still gated by safety (handy for maintenance/priming).
+- **Maintenance run** — a one-tap button runs the pump once for the configured on-time, still gated by safety (handy for maintenance/priming). The `run_pump` service does the same programmatically.
 - **Light photoperiod** — on/off times that handle the midnight crossing and DST.
 - **Dry-run protection** — the pump never runs when the reservoir is empty.
 - **Pump fault detection** — verifies real power draw after switching on (needs a power sensor).
@@ -72,7 +72,7 @@ watchdog timeouts, fan/heater behaviour) live under the integration's
 |---|---|
 | `select.*_mode` | Auto / Manual / Maintenance / Vacation |
 | `switch.*_irrigation` | Master enable for the pump cycle |
-| `button.*_run_pump` | Manually run the pump once for the configured on-time (safety-gated) |
+| `button.*_maintenance_run` | Manually run the pump once for the configured on-time (safety-gated) |
 | `number.*_pump_on_time` / `*_pump_off_time` | Pulse timing (minutes) |
 | `number.*_water_temperature_max` / `*_min` | Temperature window |
 | `time.*_light_on` / `*_light_off` | Photoperiod (only if a light is configured) |
@@ -131,7 +131,7 @@ entities:
   - entity: sensor.hydroponic_control_status
   - entity: select.hydroponic_control_mode
   - entity: switch.hydroponic_control_irrigation
-  - entity: button.hydroponic_control_run_pump
+  - entity: button.hydroponic_control_maintenance_run
   - entity: number.hydroponic_control_pump_on_time
   - entity: number.hydroponic_control_pump_off_time
   - entity: time.hydroponic_control_light_on

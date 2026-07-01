@@ -16,18 +16,18 @@ async def async_setup_entry(
     entry: HydroControlConfigEntry,
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
-    """Set up the manual pump-run button."""
-    async_add_entities([HydroRunPumpButton(entry.runtime_data)])
+    """Set up the maintenance-run button."""
+    async_add_entities([HydroMaintenanceRunButton(entry.runtime_data)])
 
 
-class HydroRunPumpButton(HydroSettingEntity, ButtonEntity):
+class HydroMaintenanceRunButton(HydroSettingEntity, ButtonEntity):
     """One-shot: run the pump for the configured on-time, honouring safety gates."""
 
     _attr_icon = "mdi:pump"
 
     def __init__(self, controller: HydroController) -> None:
         """Initialise the button."""
-        HydroSettingEntity.__init__(self, controller, "run_pump")
+        HydroSettingEntity.__init__(self, controller, "maintenance_run")
 
     async def async_press(self) -> None:
         """Run one manual pulse (no-op + warning if the safety gate is closed)."""

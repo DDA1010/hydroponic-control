@@ -93,7 +93,7 @@
       "irrigation": { "name": "Irrigation" }
     },
     "button": {
-      "run_pump": { "name": "Run pump" }
+      "maintenance_run": { "name": "Maintenance run" }
     },
     "select": {
       "mode": {
